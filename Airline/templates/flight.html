@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLIGHT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="maincontent">
+    <table>
+        <tr>
+            <th>flight_id</th>
+            <th>flight_date  </th>
+            <th>departure_time</th>
+            <th>arrival_date</th>
+            <th>departure_airport</th>
+            <th>arrival_airport</th>
+            <th>plane_no</th>
+            <th>airline_id</th>
+            <th>fare</th>
+            <th>currency</th>
+            <th>passenger_id</th>
+            
+        </tr>
+        <tr>
+            <td>001</td>
+            <td>2025-02-01</td>
+            <td>08:00:00</td>
+            <td>2025-02-01</td>
+            <td>10:00:00</td>
+            <td>1</td>
+            <td>1</td>
+            <td>150.00</td>
+            <td>USD</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>002</td>
+            <td>2025-02-02</td>
+            <td>12:00:00</td>
+            <td>2025-02-02</td>
+            <td>14:30:00</td>
+            <td>2</td>
+            <td>2</td>
+            <td>200.00</td>
+            <td>USD</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>003</td>
+            <td>2025-02-03</td>
+            <td>15:00:00</td>
+            <td>2025-02-03</td>
+            <td>18:00:00</td>
+            <td>3</td>
+            <td>3</td>
+            <td>300.00</td>
+            <td>USD</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>004</td>
+            <td>2025-02-04</td>
+            <td>09:00:00</td>
+            <td>2025-02-04</td>
+            <td>11:30:00</td>
+            <td>4</td>
+            <td>4</td>
+            <td>400.00</td>
+            <td>USD</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>005</td>
+            <td>2025-02-05</td>
+            <td>07:00:00</td>
+            <td>2025-02-05</td>
+            <td>09:30:00</td>
+            <td>5</td>
+            <td>5</td>
+            <td>250.00</td>
+            <td>USD</td>
+            <td>5</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>006</td>
+            <td>2025-02-06</td>
+            <td>10:00:00</td>
+            <td>2025-02-06</td>
+            <td>12:30:00</td>
+            <td>6</td>
+            <td>6</td>
+            <td>180.00</td>
+            <td>USD</td>
+            <td>6</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>007</td>
+            <td>2025-02-07</td>
+            <td>13:00:00</td>
+            <td>2025-02-07</td>
+            <td>15:30:00</td>
+            <td>7</td>
+            <td>7</td>
+            <td>350.00</td>
+            <td>USD</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+        <tr>
+            <td>008</td>
+            <td>2025-02-08</td>
+            <td>16:00:00</td>
+            <td>2025-02-08</td>
+            <td>18:30:00</td>
+            <td>8</td>
+            <td>8</td>
+            <td>220.00</td>
+            <td>USD</td>
+            <td>8</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>009</td>
+            <td>2025-02-09</td>
+            <td>19:00:00</td>
+            <td>2025-02-09</td>
+            <td>21:30:00</td>
+            <td>9</td>
+            <td>9</td>
+            <td>270.00</td>
+            <td>USD</td>
+            <td>1</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>010</td>
+            <td>2025-02-10</td>
+            <td>20:00:00</td>
+            <td>2025-02-10</td>
+            <td>22:00:00</td>
+            <td>10</td>
+            <td>10</td>
+            <td>300.00</td>
+            <td>USD</td>
+            <td>8</td>
+            <td>2</td>
+        </tr>
+       </table>
+    </div> 
+
+    <div id="queries">
+    <h3>book a flight</h3>
+    <form action="">
+        <p><input type="number" name="" id="" placeholder="flight id"></p>
+        <p><input type="date" name="" id="" placeholder="flight date"></p>
+        <p><input type="time" name="" id="" placeholder="departure time"></p>
+        <p><input type="date" name="" id="" placeholder="arrival date"></p>
+        <p><input type="text" name="" id="" placeholder="departure airport"></p>
+        <p><input type="text" name="" id="" placeholder="arrival airport"></p>
+        <p><input type="number" name="" id="" placeholder="plane no"></p>
+        <p><input type="number" name="" id="" placeholder="airline id"></p>
+        <p><input type="text" name="" id="" placeholder="fare"></p>
+        <p><input type="text" name="" id="" placeholder="currency"></p>
+        <p><input type="number" name="" id="" placeholder="passenger id"></p>
+    </form>
+    <button>submit</button>
+    </div>
+    
+</body>
+<a href="{% url 'home_page' %}">return to home page</a>
+</html>

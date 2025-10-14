@@ -1,0 +1,75 @@
+h1{
+  font-family: Arial, Helvetica, sans-serif;
+  /*text-align: center;*/
+  color:#4facfe;
+  font-size: 40px;  
+}
+h2{
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  font-size: 30px;
+  font-style: italic;
+  color: burlywood;
+}
+table,th,td{
+    color: honeydew;
+    border: 2px solid;
+    width: 100px;
+    height: 30px;
+    padding: 10px;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif; 
+  background-color: #003366; 
+  color: white;
+  background-image: url(img/cf5098b8-870e-422c-a771-81f4fcf9d7ea.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+footer {
+  margin-top: auto;
+  background-color: #87CEEB; 
+  color: black solid;
+  padding: 20px;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+#logo {
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#HOME{
+  text-align: center;
+}
+
+
+#content2{
+  font-size: 24px;
+  display: block;
+  margin: 40px;
+  color: #1e90ff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#queries{
+  text-align: center;
+}
+
+#maincontent{
+  text-align: center;
+  padding: 70px;
+}
