@@ -12,9 +12,9 @@ class AirlineAdmin(admin.ModelAdmin):
 class AirplaneAdmin(admin.ModelAdmin):
     list_display=("model","capacity","airline")
 class FlightAdmin(admin.ModelAdmin):
-    list_display=("flight_date","arrival_time","departure_airport","arrival_airport","departure_time","airplane","airline","fare","currency")
+    list_display=("flight_date","departure_time","departure_airport","arrival_airport","arrival_time","airplane","airline","fare","currency")
 class SeatClassAdmin(admin.ModelAdmin):
-    list_display=("plane","capacity") 
+    list_display=("seat_type","plane","capacity") 
 class PassengerAdmin(admin.ModelAdmin):
     list_display=("passenger_first_name","passenger_last_name","gender","address","contact","flight","passport_no","seatclass")
                   
