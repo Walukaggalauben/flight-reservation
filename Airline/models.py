@@ -9,8 +9,8 @@ class Airport(models.Model):
     #departure_airport = models.CharField(max_length=100)
     #arrival_airport = models.CharField(max_length=100)
     
-def __str__(self):
-    return self.airport_name
+    def __str__(self):
+        return self.airport_name
     
 class Airline(models.Model):
     airline_name = models.CharField(max_length=100)
@@ -40,7 +40,9 @@ class Flight(models.Model):
     currency = models.CharField(max_length=100)
     
     def __str__(self):
-        return f"{self.departure_airport} to {self.arrival_airport} on {self.flight_date}"
+        return f"{self.departure_airport} to {self.arrival_airport} on {self.flight_date}" 
+       #return f"{self.airline} Flight from {self.departure_airport} to {self.arrival_airport} on {self.flight_date}"
+        
     
 class SeatClass(models.Model):
     CLASS_CHOICE = [
