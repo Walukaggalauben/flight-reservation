@@ -11,14 +11,26 @@ h2{
   font-style: italic;
   color: burlywood;
 }
-table,th,td{
-    color: honeydew;
-    border: 2px solid;
-    width: 100px;
-    height: 30px;
-    padding: 10px;
-    border-collapse: collapse;
-    white-space: nowrap;
+/* tables: make spacing flexible and visually pleasing. Use bootstrap for heavy styling. */
+table, th, td {
+  color: honeydew;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 8px 12px;
+  border-collapse: collapse;
+  white-space: normal; /* allow wrapping for long content */
+}
+
+/* data-table: additional styles for table used to display model data */
+.data-table {
+  width: 100%;
+  background-color: rgba(0,0,0,0.25);
+}
+.data-table th {
+  background-color: rgba(255,255,255,0.05);
+  text-align: left;
+}
+.data-table td {
+  vertical-align: middle;
 }
 body {
   margin: 0;
@@ -72,4 +84,15 @@ footer {
 #maincontent{
   text-align: center;
   padding: 70px;
+}
+
+.btn-purple {
+  color: #fff;
+  background-color: #6f42c1;
+  border-color: #6f42c1;
+}
+.btn-purple:hover {
+  color: #fff;
+  background-color: #5936a2;
+  border-color: #5936a2;
 }

@@ -1,4 +1,11 @@
 from django.db import models
+from django.core.validators import RegexValidator
+
+#CRUD
+#C-CREATE
+#R-READ
+#U-UPDATE
+#D-DELETE 
 
 # Create your models here.
 
@@ -22,7 +29,7 @@ class Airline(models.Model):
     
 class Airplane(models.Model):
     model = models.CharField(max_length=100)
-    capacity = models.CharField(max_length=100)
+    capacity = models.IntegerField(max_length=100)
     airline = models.ForeignKey(Airline,on_delete=models.CASCADE)
     
     def __str__(self):
@@ -68,11 +75,16 @@ class Passenger(models.Model):
       # ("B","Business"),
        #("F","First Class")
     #]
+    ROLES = [
+        ("ADMIN","Admin"),
+        ("PASSENGER","Passenger")
+    ]
+    role = models.CharField(max_length=10,choices=ROLES,default="ADMIN")
     passenger_first_name = models.CharField(max_length=100)
     passenger_last_name = models.CharField(max_length=100)
     gender = models.CharField(max_length=8,choices=GENDER_OPTION)
     address = models.CharField(max_length=100,null=True,blank=True,default="N/A")
-    contact = models.CharField(max_length=10)
+    contact = models.CharField(max_length=10,validators=[RegexValidator(regex=r'^\d{10}$', message='Enter a valid 10-digit phone number')])
     flight = models.ForeignKey(Flight,on_delete=models.CASCADE)
     passport_no = models.CharField(max_length=100)
     seatclass = models.ForeignKey(SeatClass,on_delete=models.CASCADE)#,choices=SEAT_CLASS_OPTION)
