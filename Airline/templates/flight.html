@@ -1,179 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FLIGHT</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div id="maincontent">
-    <table>
-        <tr>
-            <th>flight_id</th>
-            <th>flight_date  </th>
-            <th>departure_time</th>
-            <th>arrival_date</th>
-            <th>departure_airport</th>
-            <th>arrival_airport</th>
-            <th>plane_no</th>
-            <th>airline_id</th>
-            <th>fare</th>
-            <th>currency</th>
-            <th>passenger_id</th>
-            
-        </tr>
-        <tr>
-            <td>001</td>
-            <td>2025-02-01</td>
-            <td>08:00:00</td>
-            <td>2025-02-01</td>
-            <td>10:00:00</td>
-            <td>1</td>
-            <td>1</td>
-            <td>150.00</td>
-            <td>USD</td>
-            <td>1</td>
-            <td>2</td>
-        </tr>
-        <tr>
-            <td>002</td>
-            <td>2025-02-02</td>
-            <td>12:00:00</td>
-            <td>2025-02-02</td>
-            <td>14:30:00</td>
-            <td>2</td>
-            <td>2</td>
-            <td>200.00</td>
-            <td>USD</td>
-            <td>2</td>
-            <td>3</td>
-        </tr>
-        <tr>
-            <td>003</td>
-            <td>2025-02-03</td>
-            <td>15:00:00</td>
-            <td>2025-02-03</td>
-            <td>18:00:00</td>
-            <td>3</td>
-            <td>3</td>
-            <td>300.00</td>
-            <td>USD</td>
-            <td>3</td>
-            <td>4</td>
-        </tr>
-        <tr>
-            <td>004</td>
-            <td>2025-02-04</td>
-            <td>09:00:00</td>
-            <td>2025-02-04</td>
-            <td>11:30:00</td>
-            <td>4</td>
-            <td>4</td>
-            <td>400.00</td>
-            <td>USD</td>
-            <td>4</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>005</td>
-            <td>2025-02-05</td>
-            <td>07:00:00</td>
-            <td>2025-02-05</td>
-            <td>09:30:00</td>
-            <td>5</td>
-            <td>5</td>
-            <td>250.00</td>
-            <td>USD</td>
-            <td>5</td>
-            <td>6</td>
-        </tr>
-        <tr>
-            <td>006</td>
-            <td>2025-02-06</td>
-            <td>10:00:00</td>
-            <td>2025-02-06</td>
-            <td>12:30:00</td>
-            <td>6</td>
-            <td>6</td>
-            <td>180.00</td>
-            <td>USD</td>
-            <td>6</td>
-            <td>7</td>
-        </tr>
-        <tr>
-            <td>007</td>
-            <td>2025-02-07</td>
-            <td>13:00:00</td>
-            <td>2025-02-07</td>
-            <td>15:30:00</td>
-            <td>7</td>
-            <td>7</td>
-            <td>350.00</td>
-            <td>USD</td>
-            <td>7</td>
-            <td>8</td>
-        </tr>
-        <tr>
-            <td>008</td>
-            <td>2025-02-08</td>
-            <td>16:00:00</td>
-            <td>2025-02-08</td>
-            <td>18:30:00</td>
-            <td>8</td>
-            <td>8</td>
-            <td>220.00</td>
-            <td>USD</td>
-            <td>8</td>
-            <td>1</td>
-        </tr>
-        <tr>
-            <td>009</td>
-            <td>2025-02-09</td>
-            <td>19:00:00</td>
-            <td>2025-02-09</td>
-            <td>21:30:00</td>
-            <td>9</td>
-            <td>9</td>
-            <td>270.00</td>
-            <td>USD</td>
-            <td>1</td>
-            <td>7</td>
-        </tr>
-        <tr>
-            <td>010</td>
-            <td>2025-02-10</td>
-            <td>20:00:00</td>
-            <td>2025-02-10</td>
-            <td>22:00:00</td>
-            <td>10</td>
-            <td>10</td>
-            <td>300.00</td>
-            <td>USD</td>
-            <td>8</td>
-            <td>2</td>
-        </tr>
-       </table>
-    </div> 
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
 
-    <div id="queries">
-    <h3>book a flight</h3>
-    <form action="">
-        <p><input type="number" name="" id="" placeholder="flight id"></p>
-        <p><input type="date" name="" id="" placeholder="flight date"></p>
-        <p><input type="time" name="" id="" placeholder="departure time"></p>
-        <p><input type="date" name="" id="" placeholder="arrival date"></p>
-        <p><input type="text" name="" id="" placeholder="departure airport"></p>
-        <p><input type="text" name="" id="" placeholder="arrival airport"></p>
-        <p><input type="number" name="" id="" placeholder="plane no"></p>
-        <p><input type="number" name="" id="" placeholder="airline id"></p>
-        <p><input type="text" name="" id="" placeholder="fare"></p>
-        <p><input type="text" name="" id="" placeholder="currency"></p>
-        <p><input type="number" name="" id="" placeholder="passenger id"></p>
+{% block content %}
+
+<h2>Flight List</h2>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Flight ID</th>
+            <th>Flight Date</th>
+            <th>Departure Time</th>
+            <th>Arrival Date</th>
+            <th>Departure Airport</th>
+            <th>Arrival Airport</th>
+            <th>Plane No</th>
+            <th>Airline ID</th>
+            <th>Fare</th>
+            <th>Currency</th>
+            <th>Passenger ID</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for flight in flights %}
+        <tr>
+            <td>{{ flight.flight_id }}</td>
+            <td>{{ flight.flight_date }}</td>
+            <td>{{ flight.departure_time }}</td>
+            <td>{{ flight.arrival_date }}</td>
+            <td>{{ flight.departure_airport }}</td>
+            <td>{{ flight.arrival_airport }}</td>
+            <td>{{ flight.plane_no }}</td>
+            <td>{{ flight.airline_id }}</td>
+            <td>{{ flight.fare }}</td>
+            <td>{{ flight.currency }}</td>
+            <td>{{ flight.passenger_id }}</td>
+            <td>
+                <a href="{% url 'edit_flight_page' flight.id %}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'delete_flight_page' flight.id %}"
+                   class="btn btn-sm btn-danger"
+                   onclick="return confirm('Are you sure you want to delete this flight?')">
+                   Delete
+                </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="12" class="text-center">No flights found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<hr>
+
+<div id="queries" class="container mt-4">
+    <h3>Book a Flight</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" class="btn btn-warning mt-2" value="Submit">
     </form>
-    <button>submit</button>
+
+    {% if message %}
+    <div class="alert alert-info mt-3">
+        {{ message }}
     </div>
-    
-</body>
-<a href="{% url 'home_page' %}">return to home page</a>
-</html>
+    {% endif %}
+</div>
+
+<div class="mt-4">
+    <a href="{% url 'home_page' %}" class="btn btn-secondary">Return to Home Page</a>
+</div>
+
+{% endblock content %}

@@ -1,36 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIRFORCE ONE</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+
+
+   {% load static %}
+   {% load crispy_forms_tags %}
      <img id="logo" src="img/aviones vector icono en blanco fondo, avión logo.png">
+     <center>
     <h1 id="HOME"> WELCOME TO AIR FORCE ONE !!!</h1>
     <h2>Your Journey,Our Mission</h2>
 
     <div id="content2">
-    <a href="{% url 'login_page' %} ">login</a> 
+      <ul>
+    {% comment %} <a href="{% url 'login_page' %} ">login</a> 
     <a href="{% url 'airport_page' %}">airport</a> 
     <a href="{% url 'airline_page' %}">airline</a> 
     <a href="{% url 'flight_page' %}">flight</a> 
     <a href="{% url 'passenger_page' %}">passenger</a> 
-    <a href="{% url 'seat_page' %}">seat class</a> 
+    <a href="{% url 'seat_page' %}">seat class</a>
+  
+    <a href="{% url 'airplane_page' %}">airplane</a> {% endcomment %}
+   <li><button> <a href="{% url 'login_page' %}">Login</a></button></li>
+      <li><button><a href="{% url 'sign_up_page'%}">Sign Up</a> </button></li>
+</ul>
     </div>
+  </center>
 
 
-    <footer>
-      <a href="AIR FORCE ONE ">Privacy Policy</a><br>
-      <div class="copyright">
-        © 2025 AIR FORCE ONE. All rights reserved. <br>
-        Developed by Mr.Sunshine AND CEO Minify Gadgets
-      </div>
-    </footer>
-
-
-</body>
-</html>
 
 

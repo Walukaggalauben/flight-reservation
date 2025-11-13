@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="Submit" class="btn btn-primary">LOGIN</button>
+</form>
+{% endblock content %}
+
+
+
+
+
+<!--!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,14 +22,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-
+<center>
 <body id="maincontent">
     <h1>AIRFORCE ONE</h1>
     <h2>LOGIN</h2>
     <form action="login.html">
     <p><input type="text" class="input-control" id="usernameid" placeholder="username"></p>
     <p><input type="text" class="input-control" id="passwordid" placeholder="password"></p>
-    <p> <button id="btn-submit">submit</button></p>
+    <p> <button id="btn-submit">Login</button></p>
+    <a>Don't have an account? <a href="{% url 'sign_up_page' %}">Sign Up</a></a>
 </form>
 
 <script>
@@ -49,5 +65,6 @@
 </script>
 
 </body>
+</center>
 
 </html>

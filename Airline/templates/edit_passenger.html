@@ -1,0 +1,23 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Passenger</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container" style="padding:20px;">
+        <h2>Edit Passenger: {{ passenger.passenger_first_name }} {{ passenger.passenger_last_name }}</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input type="submit" class="btn btn-primary" value="Save">
+            <a href="{% url 'passenger_page' %}" class="btn btn-success">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
