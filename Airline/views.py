@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 from Airline.forms import AirportForm
 from Airline.models import Airport
@@ -17,10 +19,11 @@ from Airline.models import Passenger
 
 from Airline.forms import SeatForm
 from Airline.models import SeatClass
+from Airline.forms import LoginForm
+from django.contrib.auth import login, logout
 
 # Create your views here.
-def login_view(request):
-        return render(request,'login.html')
+
 
 
     
@@ -28,6 +31,7 @@ def login_view(request):
 def home_view(request):
     return render(request,'home.html')
 
+@login_required
 def airline_view(request):
     message = ''
     if request.method == "POST":
@@ -47,6 +51,8 @@ def airline_view(request):
     }
     return render(request,'airline.html',context)
 
+    
+@login_required
 def delete_airline(request,airline_id):
     airline = Airline.objects.get(id = airline_id)
     if airline:
@@ -59,7 +65,8 @@ def delete_airline(request,airline_id):
         print('Airline not found')
         message = 'Airline Not Found'
         return render(request,'airline.html')
-    
+
+@login_required    
 def edit_airline(request,airline_id):
     airline =  Airline.objects.get(id = airline_id)
     if request.method == 'POST':
@@ -81,6 +88,7 @@ def edit_airline(request,airline_id):
         }        
         return render(request,'edit_passenger.html',context)    
 
+# @login_required
 def airplane_view(request):
     message = ''
     if request.method == "POST":
@@ -108,6 +116,7 @@ def airplane_view(request):
     }        
     return render(request,'airplane.html',context)
 
+@login_required
 def airport_view(request):
     message = ""
     if request.method == "POST":
@@ -121,12 +130,13 @@ def airport_view(request):
     airports = Airport.objects.all()  
 
     context = {
-        'form': airport_form,  # keyword '' and it is important to put a comma after airport_form
+        'form': airport_form,  
         'message': message,
         'airports': airports
     }
     return render(request,'airport.html',context)
 
+@login_required
 def delete_airport(request,airport_id):
     airport = Airport.objects.get(id = airport_id)
     if airport:
@@ -139,7 +149,8 @@ def delete_airport(request,airport_id):
         print('Airport not found')
         message = 'Airport Not Found'
         return render(request,'airport.html')
-    
+
+@login_required    
 def edit_airport(request,airport_id):
     airport =  Airport.objects.get(id = airport_id)
     if request.method == 'POST':
@@ -161,6 +172,7 @@ def edit_airport(request,airport_id):
         }        
         return render(request,'edit_passenger.html',context)    
 
+@login_required
 def flight_view(request):
     message = ''
     
@@ -181,6 +193,7 @@ def flight_view(request):
     }
     return render(request,'flight.html',context)
 
+@login_required
 def delete_flight(request,flight_id):
     flight = Flight.objects.get(id = flight_id)
     if flight:
@@ -195,6 +208,7 @@ def delete_flight(request,flight_id):
         return render(request,'flight.html')
 
 
+@login_required
 def edit_flight(request,flight_id):
     flight =  Flight.objects.get(id = flight_id)
     if request.method == 'POST':
@@ -217,6 +231,7 @@ def edit_flight(request,flight_id):
         return render(request,'edit_passenger.html',context)
 
 
+@login_required
 def passenger_view(request):
     message = ''
     if request.method == "POST":
@@ -235,6 +250,7 @@ def passenger_view(request):
     }
     return render(request,'passenger.html',context)
 
+@login_required
 def delete_passenger(request,passenger_id):
     passenger = Passenger.objects.get(id=passenger_id)
     passenger.delete()
@@ -258,7 +274,7 @@ def edit_passenger(request,passenger_id):
     }
     return render(request, 'edit_passenger.html', context)
 
-
+@login_required
 def seat_view(request):
     message = ''
     if request.method == "POST":
@@ -283,7 +299,7 @@ def delete_seat_class(request,seat_class_id):
     
     return redirect('seat_page')
 
-
+@login_required
 def edit_seat_class(request,seat_class_id):
     seat_class =  SeatClass.objects.get(id = seat_class_id)
     if request.method == 'POST':
@@ -309,7 +325,7 @@ def edit_seat_class(request,seat_class_id):
 def Passenger_home_view(request):
     return render(request,'passenger_home.html')
 
-
+@login_required
 def deleteairplane(request,airplane_id):
     airplane = Airplane.objects.get(id = airplane_id)
     if airplane:
@@ -323,7 +339,7 @@ def deleteairplane(request,airplane_id):
         message = 'Airplane Not Found'
         return render(request,'airplane.html')
 
-
+@login_required
 def edit_airplane(request,airplane_id):
     plane =  Airplane.objects.get(id = airplane_id)
     if request.method == 'POST':
@@ -343,4 +359,43 @@ def edit_airplane(request,airplane_id):
             'form': airplane_form,
             'airplanes': airplanes
         }        
+
         return render(request,'edit_passenger.html',context)
+
+def sign_up_view(request):
+    message = ''
+    if request.method == 'POST':
+        sign_up_form = UserCreationForm(request.POST)
+        if sign_up_form.is_valid():
+            sign_up_form.save()
+            message = "Sign Up Successful"
+        else:
+            message = "Error in Sign Up"    
+            return redirect('login_page')
+    else:
+        sign_up_form = UserCreationForm()
+        
+    context = {
+        'form': sign_up_form,
+        'message': message
+    }        
+    return render(request,'registration/sign_up.html',context) 
+
+def dashboard_view(request):
+    return render(request,'base.html')
+
+def login_view(request):
+    if request.method =='POST':
+        form =LoginForm(request,data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request,user)
+            return redirect ('dashboard_page')
+    else:
+        form =LoginForm()
+
+    return render(request,'registration/login.html',{'form':form})
+
+def logout_view(request):
+    logout(request)
+    return redirect('home_page')

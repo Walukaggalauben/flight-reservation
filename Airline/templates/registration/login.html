@@ -1,0 +1,70 @@
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="Submit" class="btn btn-primary">LOGIN</button>
+</form>
+{% endblock content %}
+
+
+
+
+
+<!--!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<center>
+<body id="maincontent">
+    <h1>AIRFORCE ONE</h1>
+    <h2>LOGIN</h2>
+    <form action="login.html">
+    <p><input type="text" class="input-control" id="usernameid" placeholder="username"></p>
+    <p><input type="text" class="input-control" id="passwordid" placeholder="password"></p>
+    <p> <button id="btn-submit">Login</button></p>
+    <a>Don't have an account? <a href="{% url 'sign_up_page' %}">Sign Up</a></a>
+</form>
+
+<script>
+    const submit_button = document.getElementById("btn-submit");
+
+    
+    submit_button.addEventListener("click", function(event){
+        event.preventDefault();
+        const isValid = validateForm()
+        console.log("Is Form Valid: ", )
+        if (isValid){
+         document.location.href="homepage";
+        }
+        
+    })
+    
+    function validateForm(){
+    const userid = document.getElementById("usernameid");
+    const passid = document.getElementById("passwordid");
+     if (userid.value.length==0){
+        alert("username is missing")
+        return false
+     }
+     if(passid.value.length==0) {
+        alert("Password is missing");
+        return false
+     }
+     return true
+    }
+
+
+</script>
+
+</body>
+</center>
+
+</html>

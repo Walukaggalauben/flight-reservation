@@ -1,0 +1,46 @@
+{% load static%}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AIRLINE MANAGEMENT SYSTEM</title>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        <header>
+            <link rel="stylesheet" href="{% static 'css/material-dashboard.css' %}">
+        </header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{% url 'home_page' %}">Airline Management System</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'airport_page' %}">Airports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'airline_page' %}">Airlines</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'flight_page' %}">Flights</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'passenger_page' %}">Passengers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'seat_page' %}">Seat Classes</a>
+                    </li>
+        
+        <body>
+            {% block content %}
+
+        {% endblock content %}
+           <div class="container">
+        <footer>
+      <a href="AIR FORCE ONE ">Privacy Policy</a><br>
+      <div class="copyright">
+        © 2025 AIR FORCE ONE. All rights reserved. <br>
+        Developed by Mr.Sunshine AND CEO Minify Gadgets
+      </div>
+    </footer>
+          </body>    
