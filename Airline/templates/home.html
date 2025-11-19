@@ -1,28 +1,160 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Force One - Home</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url("{% static 'airplanes/clouds_bg.jpg' %}") no-repeat center center/cover,
+                        linear-gradient(to bottom right, #0c7df7ff, #1b263b, #415a77);
+            color: white;
+            font-family: "Segoe UI", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            animation: fadeBg 2s ease-in-out;
+        }
+
+        /* Smooth background gradient animation */
+        @keyframes fadeBg {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        #home-container {
+            animation: fadeIn 1.2s ease-in-out;
+            margin-bottom: 80px;
+        }
+
+        /* Smooth fade-in */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #logo {
+            width: 170px;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 12px rgba(255,255,255,0.3));
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .btn-custom {
+            padding: 12px 40px;
+            width: 220px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: 0.3s ease-in-out;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .btn-custom:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(255,255,255,0.2);
+        }
+
+        .btn-login {
+            background: #1b98e0;
+            color: white;
+        }
+
+        .btn-signup {
+            background: #e0c31b;
+            color: #0d1b2a;
+        }
+
+        .btn-login:hover {
+            background: #1478b8;
+        }
+
+        .btn-signup:hover {
+            background: #f1d41d;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        ul li {
+            margin: 15px 0;
+        }
+
+        /* FOOTER */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            color: #f1f1f1;
+            text-align: center;
+            padding: 12px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            backdrop-filter: blur(6px);
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="home-container">
+    
+    <!-- MAIN LOGO -->
+    <img id="logo" src="{% static 'static/img/Airplane landing on airport runway _ Premium AI-generated image.jpeg' %}" alt="Logo">
+
+    <h1>WELCOME TO AIR FORCE ONE</h1>
+    <h2>Your Journey, Our Mission ✈️</h2>
+
+    <ul>
+        <li>
+            <a href="{% url 'login_page' %}" class="btn btn-custom btn-login">
+                Login
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'sign_up_page' %}" class="btn btn-custom btn-signup">
+                Sign Up
+            </a>
+        </li>
+    </ul>
+
+</div>
 
 
-   {% load static %}
-   {% load crispy_forms_tags %}
-     <img id="logo" src="img/aviones vector icono en blanco fondo, avión logo.png">
-     <center>
-    <h1 id="HOME"> WELCOME TO AIR FORCE ONE !!!</h1>
-    <h2>Your Journey,Our Mission</h2>
-
-    <div id="content2">
-      <ul>
-    {% comment %} <a href="{% url 'login_page' %} ">login</a> 
-    <a href="{% url 'airport_page' %}">airport</a> 
-    <a href="{% url 'airline_page' %}">airline</a> 
-    <a href="{% url 'flight_page' %}">flight</a> 
-    <a href="{% url 'passenger_page' %}">passenger</a> 
-    <a href="{% url 'seat_page' %}">seat class</a>
-  
-    <a href="{% url 'airplane_page' %}">airplane</a> {% endcomment %}
-   <li><button> <a href="{% url 'login_page' %}">Login</a></button></li>
-      <li><button><a href="{% url 'sign_up_page'%}">Sign Up</a> </button></li>
-</ul>
-    </div>
-  </center>
+<footer style="position: fixed; bottom: 0; width: 100%; background: rgba(68, 236, 96, 0.6); color: white; text-align: center; padding: 10px 0; font-family: 'Segoe UI', sans-serif; font-size: 0.9rem; letter-spacing: 0.5px;">
+    Your Journey Starts With Us © 2025 COPYRIGHTED DESIGNED BY MINIFY GADGETS & HAN SCENTS | MINIFY AIRLINE | Comfort.Safety.Reliability
+</footer>
 
 
-
-
+</body>
+</html>
