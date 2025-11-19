@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
@@ -20,7 +22,7 @@ from Airline.models import Passenger
 from Airline.forms import SeatForm
 from Airline.models import SeatClass
 from Airline.forms import LoginForm
-from django.contrib.auth import login, logout
+from django.contrib.auth import login,logout
 
 # Create your views here.
 
@@ -38,7 +40,9 @@ def airline_view(request):
         airline_form = AirlineForm(request.POST)
         if airline_form.is_valid():
             airline_form.save()
-            message = "Airline Added Successfully"
+            messages.success(request, "Airline Added Successfully")
+        else:
+            messages.error(request, "Error adding Airline")
     else:        
         airline_form = AirlineForm()
 
@@ -47,7 +51,7 @@ def airline_view(request):
     context = {
         'form': airline_form,
         'message': message,
-        'airlines': airlines
+        'airlines': airlines,        
     }
     return render(request,'airline.html',context)
 
@@ -84,9 +88,11 @@ def edit_airline(request,airline_id):
         
         context = {
             'form': airline_form,
-            'airlines': airlines
+            'airlines': airlines,
+            'title': 'Edit Airline',
+            'back_url': reverse('airline_page')
         }        
-        return render(request,'edit_passenger.html',context)    
+        return render(request,'edit_form.html',context)    
 
 # @login_required
 def airplane_view(request):
@@ -95,13 +101,13 @@ def airplane_view(request):
         airplane_form = AirplaneForm(request.POST)
         if airplane_form.is_valid():
             airplane_form.save()
-            message = "Airplane Added Successfully"
+            messages.success(request, "Airplane Added Successfully")
    
     if request.method == "DELETE":
         airplane_id = request.POST.get('airplane_id')
         airplane = Airplane.objects.get(id=airplane_id)
         airplane.delete()
-        message = "Airplane Deleted Successfully"
+       
    
    
     else:        
@@ -123,7 +129,7 @@ def airport_view(request):
         airport_form = AirportForm(request.POST)
         if airport_form.is_valid():
             airport_form.save()
-            message = "Airport Added Successfully"
+            messages.success(request, "Airport Added Successfully")
     else:
         airport_form = AirportForm()
 
@@ -168,9 +174,11 @@ def edit_airport(request,airport_id):
         
         context = {
             'form': airport_form,
-            'airports': airports
+            'airports': airports,
+            'title': 'Edit Airport',
+            'back_url': reverse('airport_page')
         }        
-        return render(request,'edit_passenger.html',context)    
+        return render(request,'edit_form.html',context)    
 
 @login_required
 def flight_view(request):
@@ -180,7 +188,7 @@ def flight_view(request):
         flight_form = FlightForm(request.POST)
         if flight_form.is_valid():
             flight_form.save()
-            message = "Flight Added Successfully"
+            messages.success(request, "Flight Added Successfully")
     else:
         flight_form = FlightForm()
         
@@ -189,7 +197,8 @@ def flight_view(request):
     context = {
         'form': flight_form,
         'message': message,
-        'flights': flights
+        'flights': flights,
+        
     }
     return render(request,'flight.html',context)
 
@@ -226,9 +235,11 @@ def edit_flight(request,flight_id):
         
         context = {
             'form': flight_form,
-            'flights': flights
+            'flights': flights,
+            'title': 'Edit Flight',
+            'back_url': reverse('flight_page')
         }        
-        return render(request,'edit_passenger.html',context)
+        return render(request,'edit_form.html',context)
 
 
 @login_required
@@ -238,7 +249,7 @@ def passenger_view(request):
         passenger_form = PassengerForm(request.POST)
         if passenger_form.is_valid():
             passenger_form.save()
-            message = "Passenger Added Successfully"
+            messages.success(request, "Passenger Added Successfully")
     else:        
         passenger_form = PassengerForm()
     passengers = Passenger.objects.all()
@@ -271,8 +282,10 @@ def edit_passenger(request,passenger_id):
         'form': passenger_form,
         'passengers': passengers,
         'passenger': passenger,
+        'title': 'Edit Passenger',
+        'back_url': reverse('passenger_page')
     }
-    return render(request, 'edit_passenger.html', context)
+    return render(request, 'edit_form.html', context)
 
 @login_required
 def seat_view(request):
@@ -281,7 +294,7 @@ def seat_view(request):
         seat_form = SeatForm(request.POST)
         if seat_form.is_valid():
             seat_form.save()
-            message = "SeatClass Added Successfully"
+            messages.success(request, "Seat Class Added Successfully")
     else:        
         seat_form = SeatForm()
     seat_class = SeatClass.objects.all()
@@ -317,9 +330,11 @@ def edit_seat_class(request,seat_class_id):
         
         context = {
             'form': seat_form,
-            'seats': seats
+            'seats': seats,
+            'title': 'Edit Seat Class',
+            'back_url': reverse('seat_page')
         }        
-        return render(request,'edit_passenger.html',context)
+        return render(request,'edit_form.html',context)
 
 
 def Passenger_home_view(request):
@@ -357,10 +372,12 @@ def edit_airplane(request,airplane_id):
         
         context = {
             'form': airplane_form,
-            'airplanes': airplanes
+            'airplanes': airplanes,
+            'title': 'Edit Airplane',
+            'back_url': reverse('airplane_page')
         }        
 
-        return render(request,'edit_passenger.html',context)
+        return render(request,'edit_form.html',context)
 
 def sign_up_view(request):
     message = ''
